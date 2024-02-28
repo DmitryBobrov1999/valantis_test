@@ -1,0 +1,30 @@
+.goods_wrapper {
+	width: 100%;
+	min-height: 100vh;
+	padding-top: 40px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.goods_container {
+	max-width: 1158px;
+	padding-top: 30px;
+	display: grid;
+	grid-template-columns: repeat(7, 150px);
+	grid-gap: 30px 26px;
+	cursor: pointer;
+}
+
+.goods_item {
+	height: 200px;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	border: 3px solid grey;
+	border-radius: 3px;
+}
+
+.goods_p {
+	color: black;
+}

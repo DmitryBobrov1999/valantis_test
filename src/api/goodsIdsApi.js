@@ -1,6 +1,6 @@
 import crypto from 'crypto-js';
 
-export const getGoods = async goods => {
+export const getGoodsIds = async () => {
 	const url = 'http://api.valantis.store:40000/';
 
 	const password = 'Valantis';
@@ -12,8 +12,8 @@ export const getGoods = async goods => {
 	const authString = crypto.MD5(authData).toString();
 
 	const requestBody = {
-		action: 'get_items',
-		params: { ids: goods},
+		action: 'get_ids',
+		params: { limit: 50 },
 	};
 
 	const response = await fetch(url, {
