@@ -1,30 +1,44 @@
 .goods_wrapper {
 	width: 100%;
 	min-height: 100vh;
-	padding-top: 40px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: space-between;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .goods_container {
-	max-width: 1158px;
-	padding-top: 30px;
+	padding-top: 20px;
 	display: grid;
-	grid-template-columns: repeat(7, 150px);
-	grid-gap: 30px 26px;
-	cursor: pointer;
+	grid-template-columns: repeat(10, 160px);
+	grid-gap: 20px 20px;
 }
 
 .goods_item {
-	height: 200px;
+	height: 180px;
 	display: flex;
 	flex-direction: column;
 	position: relative;
 	border: 3px solid grey;
 	border-radius: 3px;
+	text-align: center;
+	cursor: pointer;
+	justify-content: space-between;
+	padding-top: 8px;
+	padding-bottom: 8px;
 }
 
-.goods_p {
+.goods_span {
 	color: black;
+}
+
+.goods_span-price {
+	color: red;
+}
+
+.fake_div {
+	width: 48px;
+	height: 48px;
 }

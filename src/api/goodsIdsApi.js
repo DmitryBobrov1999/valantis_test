@@ -1,6 +1,6 @@
 import crypto from 'crypto-js';
 
-export const getGoodsIds = async () => {
+export const getGoodsIds = async (offset, limit) => {
 	const url = 'http://api.valantis.store:40000/';
 
 	const password = 'Valantis';
@@ -13,7 +13,7 @@ export const getGoodsIds = async () => {
 
 	const requestBody = {
 		action: 'get_ids',
-		params: { limit: 50 },
+		params: { limit: limit, offset: offset },
 	};
 
 	const response = await fetch(url, {
