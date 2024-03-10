@@ -2,7 +2,7 @@ import axios from 'axios';
 import crypto from 'crypto-js';
 
 export const getGoods = async (goodsData, limit, offset) => {
-	const url = 'http://api.valantis.store:40000/';
+	const url = 'https://api.valantis.store:41000/';
 
 	const password = 'Valantis';
 

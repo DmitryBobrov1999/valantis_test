@@ -2,7 +2,7 @@ import crypto from 'crypto-js';
 import axios from 'axios';
 
 export const getGoodsFilter = async (selectedKey, inputValue) => {
-	const url = 'http://api.valantis.store:40000/';
+	const url = 'https://api.valantis.store:41000/';
 
 	const password = 'Valantis';
 
