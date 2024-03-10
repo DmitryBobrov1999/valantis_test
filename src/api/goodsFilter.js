@@ -1,7 +1,7 @@
-import axios from 'axios';
 import crypto from 'crypto-js';
+import axios from 'axios';
 
-export const getGoods = async (goodsData, limit, offset) => {
+export const getGoodsFilter = async (selectedKey, inputValue) => {
 	const url = 'http://api.valantis.store:40000/';
 
 	const password = 'Valantis';
@@ -13,8 +13,10 @@ export const getGoods = async (goodsData, limit, offset) => {
 	const authString = crypto.MD5(authData).toString();
 
 	const requestBody = {
-		action: 'get_items',
-		params: { ids: goodsData, limit: limit, offset: offset },
+		action: 'filter',
+		params: {
+			[selectedKey]: inputValue,
+		},
 	};
 
 	let retryCount = 0;
@@ -22,6 +24,7 @@ export const getGoods = async (goodsData, limit, offset) => {
 	while (retryCount < 3) {
 		try {
 			const response = await axios.post(url, requestBody, {
+				
 				headers: {
 					'Content-Type': 'application/json',
 					'X-Auth': authString,

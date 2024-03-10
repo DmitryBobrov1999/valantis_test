@@ -1,8 +1,7 @@
 import ReactPaginate from 'react-paginate';
 import './Pagination.css';
 
-export const Pagination = ({ handlePageClick, pageCount }) => {
-
+export const Pagination = ({ handlePageClick, pageCount, currentPage }) => {
 	return (
 		<ReactPaginate
 			breakLabel='...'
@@ -18,6 +17,7 @@ export const Pagination = ({ handlePageClick, pageCount }) => {
 			nextLinkClassName='page-num'
 			activeLinkClassName='active'
 			breakLinkClassName='page-num'
+			forcePage={currentPage}
 		/>
 	);
-}; // компонент пагинации
+};

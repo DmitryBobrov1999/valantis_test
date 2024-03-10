@@ -1,3 +1,4 @@
+import axios from 'axios';
 import crypto from 'crypto-js';
 
 export const getGoodsIds = async (offset, limit) => {
@@ -16,23 +17,27 @@ export const getGoodsIds = async (offset, limit) => {
 		params: { limit: limit, offset: offset },
 	};
 
-	const response = await fetch(url, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			'X-Auth': authString,
-		},
-		body: JSON.stringify(requestBody),
-	})
-		.then(response => {
-			if (response.ok) {
-				return response.json();
-			}
-			throw new Error('Request failed');
-		})
-		.catch(error => {
-			console.error(error);
-		});
+	let retryCount = 0;
 
-	return response;
+	while (retryCount < 3) {
+		try {
+			const response = await axios.post(url, requestBody, {
+				headers: {
+					'Content-Type': 'application/json',
+					'X-Auth': authString,
+				},
+			});
+
+			if (response.status === 200) {
+				return response.data;
+			} else {
+				retryCount++;
+			}
+		} catch (error) {
+			console.error(error);
+			retryCount++;
+		}
+	}
+
+	throw new Error('Exceeded retry limit');
 };
